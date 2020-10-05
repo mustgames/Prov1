@@ -7,7 +7,6 @@ namespace Prov1App
 
         static void Main(string[] args)
         {
-
             Start();
         }
         static void Start()
@@ -35,13 +34,12 @@ namespace Prov1App
         static void PlayGame()
         {
             int shipLocation = 6;
-            int Miss;
+            int miss;
 
             string playerInput;
             int playerGuess = 0;
-            Boolean enemyShipAlive = true;
 
-            while (enemyShipAlive == true)
+            while (true)
             {
                 playerInput = Console.ReadLine();
                 Console.Clear();
@@ -51,21 +49,26 @@ namespace Prov1App
                 }
                 catch (System.Exception)
                 {
-                    Console.WriteLine("Thats not a valid cordenate captain, try again");
+                    //Console.WriteLine("Thats not a valid cordenate captain, try again (Guess between 1-10)");
                 }
-                Miss = shipLocation - playerGuess;
+                miss = shipLocation - playerGuess;
 
                 if (playerGuess > 0 && playerGuess < 11)
                 {
                     if (playerGuess == shipLocation)
                     {
-                        enemyShipAlive = false;
+                        break;
                     }
                     else
                     {
-                        Console.WriteLine("We missed by: " + Math.Abs(Miss));
+                        Console.WriteLine("We missed by: " + Math.Abs(miss));
                         Console.WriteLine("Shoot another shot! (Guess between 1-10)");
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Thats not a valid cordenate captain, try again (Guess between 1-10)");
+
                 }
             }
             Win();
